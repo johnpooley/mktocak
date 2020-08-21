@@ -25,9 +25,9 @@ export default class Contribute extends Component{
         }else{
         return(
             <div className='middle'>
-                <p><a className='btn draw-border' href='/contribute/map' style={{textDecoration:'none',textAlign:'center'}}>Погледни ја мапата</a></p>
-                <button className='btn draw-border' onClick={()=>this.lineClicked()}>Додади велосипедска патека</button>
-                <button className='btn draw-border' onClick={()=>this.objectClicked()}>Додади објект(сервис, паркинг и слично)</button>
+                <p><a className='btn draw-border' href='/contribute/map' style={{textDecoration:'none',textAlign:'center'}}>Look at the map</a></p>
+                <button className='btn draw-border' onClick={()=>this.lineClicked()}>Add a bike path</button>
+                <button className='btn draw-border' onClick={()=>this.objectClicked()}>Add facility (service, parking, etc.)</button>
             </div>
         )
         }

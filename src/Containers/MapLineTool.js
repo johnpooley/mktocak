@@ -45,10 +45,10 @@ export default class MapLineTool extends Component{
         })
         db.collection('modMap').add({points: destructuredPoints, pathState: this.state.pathState, pathPlace: this.state.pathPlace,user:this.props.user.displayName,uid:this.props.user.uid}).then(()=>{
         this.startOver()
-        this.setState({popup: 'Успешно пратено. Ве молиме почекајте до 24 часа за оваа патека да биде валидирана. Докулку таа се потврди добивате 30 вело-поени. До тогаш додавајте други патеки!'})
+        this.setState({popup: 'Successfully sent. Please wait up to 24 hours for this path to take effect. If it is confirmed you get 30 bike-points. Until then, add other paths!'})
         }).catch((error)=>{
             console.log(error);
-            this.setState({popup: 'Хмм, имаше проблем. Ве молиме пробајте повторно подоцна!'})
+            this.setState({popup: 'Hmmm, there was a problem. Please try again later!'})
         })
     }
     startOver = ()=>{
@@ -61,15 +61,15 @@ export default class MapLineTool extends Component{
     }
     validation = ()=>{
         if(this.state.pathState==0){
-            this.setState({popup: 'Ве молиме внесете состојба на патеката'});
+            this.setState({popup: 'Please enter a track status'});
             return false;
         }
         if(this.state.pathPlace==0){
-            this.setState({popup: 'Ве молиме внесете положба на патеката'});
+            this.setState({popup: 'Please enter a track position'});
             return false;
         }
         if(this.state.points.length<2){
-            this.setState({popup: 'Инвалидна патека - Ве молиме внесете барем две точки кои претставуваат валидна патека. Прочитајте го упатството за повеќе информации'});
+            this.setState({popup: 'Disabled path - Please enter at least two points that represent a valid path. Read the manual for more information'});
             return false;
         }
         return true
@@ -80,56 +80,56 @@ export default class MapLineTool extends Component{
                 <Popup open={this.state.popup} onClose={()=>this.setState({popup: ''})}>
                     <div>
                         <p style={{textAlign:'center'}}>{this.state.popup}</p>
-                        <p style={{textAlign:'center',fontSize:'10px'}}><i>Кликнете надвор од ова прозорче за да го изгасите</i></p>
+                        <p style={{textAlign:'center',fontSize:'10px'}}><i>Click outside this window to turn it off</i></p>
                     </div>
                 </Popup>
                 <div style={{borderRadius:'10px',height:'fit-content',padding:'3px',margin:'15px',backgroundColor:'rgba(255,255,255,0.5)',border:'1px solid #2c3e50'}}>
                     <Map points={this.state.points} updatePoints={points=>this.updatePoints(points)} canAddPoint={true} ref={this.child}/>
                     <div style={{display:'inline-block',verticalAlign:'top'}}>
-                    <h4 style={{maxWidth:'500px',marginLeft:'20px'}}>Ве молиме да ги прочитате упатството и правилата на крајот од странава пред да почнете</h4>
+                    <h4 style={{maxWidth:'500px',marginLeft:'20px'}}>Please read the manual and rules at the end of this page before you start</h4>
                         <div className='select'>
                             <select value={this.state.pathState} onChange={(ev)=>this.updatePathState(ev)}>
-                                <option value={0}>Избери состојба на патеката</option>
-                                <option value={1}>Нова/Како нова</option>
-                                <option value={2}>Добра</option>
-                                <option value={3}>Лоша</option>
+                                <option value={0}>Select a track condition</option>
+                                <option value={1}>New / As new</option>
+                                <option value={2}>Good</option>
+                                <option value={3}>Bad</option>
                             </select>
                         </div>
                     <div className='select'>
                         <select value={this.state.pathPlace} onChange={(ev)=>this.updatePathPlace(ev)}>
-                            <option value={0}>Избери положба на патеката</option>
-                            <option value={1}>На коловоз одвоена од возила</option>
-                            <option value={2}>На тротоар одвоена од пешаци</option>
-                            <option value={3}>На тротоар заедно со пешаци</option>
-                            <option value={4}>Специална(сосема одвоена/offroad)</option>
+                            <option value={0}>Choose a track position</option>
+                            <option value={1}>On the road separated from vehicles</option>
+                            <option value={2}>On the sidewalk separated from pedestrians</option>
+                            <option value={3}>On the sidewalk along with pedestrians</option>
+                            <option value={4}>Special (completely separate / offroad)</option>
                         </select>
                     </div>
-                    <button style={{display:'inline-block',width:'fit-content',height:'35px',margin:'20px',fontSize:'15px',fontWeight:'100',padding:'10px'}} className='btn draw-border' onClick={()=>this.addPointClick()}>Додади точка</button>
-                    <button style={{display:'inline-block',width:'fit-content',height:'35px',margin:'20px',fontSize:'15px',fontWeight:'100',padding:'10px'}} className='btn draw-border' onClick={()=>this.uploadPoints()}>Прати!</button>
-                    <button style={{display:'inline-block',width:'fit-content',height:'35px',margin:'20px',fontSize:'15px',fontWeight:'100',padding:'10px'}} className='btn draw-border' onClick={()=>this.startOver()}>Почни одново</button>
+                    <button style={{display:'inline-block',width:'fit-content',height:'35px',margin:'20px',fontSize:'15px',fontWeight:'100',padding:'10px'}} className='btn draw-border' onClick={()=>this.addPointClick()}>Add a dot</button>
+                    <button style={{display:'inline-block',width:'fit-content',height:'35px',margin:'20px',fontSize:'15px',fontWeight:'100',padding:'10px'}} className='btn draw-border' onClick={()=>this.uploadPoints()}>Send!</button>
+                    <button style={{display:'inline-block',width:'fit-content',height:'35px',margin:'20px',fontSize:'15px',fontWeight:'100',padding:'10px'}} className='btn draw-border' onClick={()=>this.startOver()}>Start over</button>
                 </div>
                 </div>
                 <div style={{borderRadius:'10px',height:'fit-content',padding:'30px',margin:'30px',backgroundColor:'rgba(255,255,255,0.5)',border:'1px solid #2c3e50'}}>
-                    <h2>Упатство</h2>
+                    <h2>Instruction</h2>
                     <hr/>
                     <ol>
-                        <p>1. Движи ја мапата до почетокот на патеката</p>
-                        <p>2. Притисни 'Додади точка' за заклучување на таа позиција</p>
-                        <p>3. Движи ја мапата до следната кривина или раскрсница и притисни 'Додади точка'</p>
-                        <p>4. Продожи така до крајот на патеката</p>
-                        <p>5. Избери состојба на патот и положба</p>
-                        <p>6. На крај провери дали се е точно и притисни 'Испрати!'</p>
-                        <p>7. Додадената патека ќе биде проверена во 24 часа и ако биде одобрена ќе добиете 10 вело-поени</p>
+                        <p>1. Move the map to the beginning of the path</p>
+                        <p>2. Press 'Add Point' to lock that position</p>
+                        <p>3. Move the map to the next turn or intersection and click 'Add Point'</p>
+                        <p>4. Continue like this until the end of the track</p>
+                        <p>5. Choose a road condition and position</p>
+                        <p>6. Finally check if everything is correct and press 'Send!'</p>
+                        <p>7. The added trail will be checked in 24 hours and if approved you will receive 10 cycling points</p>
                     </ol>
-                    <h2>Правила </h2>
+                    <h2>Rules </h2>
                     <hr/>
-                    <h3>Ако некое од овие правила се прекрши, вашиот профил може да биде целосно избришан</h3>
+                    <h3>If any of these rules are violated, your account may be completely deleted</h3>
                     <hr/>
                     <ul>
-                        <p>Зумирај и биди прецизни со точките</p>
-                        <p>Забрането е поставување лажни патеки</p>
-                        <p>Провери дали твојата патека е веќе ставена на главната мапа</p>
-                        <p>Не праќај иста патека повеќе од еднаш</p>
+                        <p>Zoom in and be precise with the points</p>
+                        <p>It is forbidden to set false paths</p>
+                        <p>Make sure your path is already on the main map</p>
+                        <p>Do not send the same path more than once</p>
                     </ul>
                 </div>
             </div>

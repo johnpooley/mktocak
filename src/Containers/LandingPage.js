@@ -72,10 +72,10 @@ class LandingPage extends Component{
                     <button className='btn draw-border' style={{margin:'auto',marginTop:'5px'}} onClick={()=>this.props.history.push('/rides')}>Сите објави</button>
                 </div>
                 <div style={{borderRadius:'10px',height:'fit-content',padding:'10px',margin:'15px',marginTop:'30px',backgroundColor:'rgba(255,255,255,0.5)',border:'1px solid #2c3e50'}}>
-                    <h1 style={{textAlign:'center'}}><a href='/user' style={{textDecoration:'none',color:'#f39c12'}}>Најави се!</a></h1>
-                    <p style={{display:'inline-block',textAlign:'center',width:'33%',fontSize:'20px'}}><i>Постирај ги твоите возења</i></p>
-                    <p style={{ display:'inline-block',textAlign:'center',width:'33%',fontSize:'20px'}}><i>Учествувај во {'\n'}унапредување на мапата</i></p>
-                    <p style={{ display:'inline-block',textAlign:'center',width:'33%',fontSize:'20px'}}><i>Собирај вело-поени!</i></p>
+                    <h1 style={{textAlign:'center'}}><a href='/user' style={{textDecoration:'none',color:'#f39c12'}}>Log in!</a></h1>
+                    <p style={{display:'inline-block',textAlign:'center',width:'33%',fontSize:'20px'}}><i>Post your rides</i></p>
+                    <p style={{ display:'inline-block',textAlign:'center',width:'33%',fontSize:'20px'}}><i>Participate in {'\n'}map improvement</i></p>
+                    <p style={{ display:'inline-block',textAlign:'center',width:'33%',fontSize:'20px'}}><i>Collect bike points!</i></p>
                 </div>
                 <div style={{height:'20px',width:'100%',backgroundColor:'#2c3e50',textAlign:'center'}}>
                     <p><a style={{color:'white',textAlign:'center',fontSize:'10px',verticalAlign:'middle'}} href='/policy'>TOS</a></p>
