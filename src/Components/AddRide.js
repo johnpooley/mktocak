@@ -70,8 +70,7 @@ class AddRide extends Component{
         let time = '';
         if(this.state.hour==0){
         }else if(this.state.hour==1){
-            time='One hour
-'
+            time='One hour'
         }
         else{
             time=this.state.hour + ' hours'
