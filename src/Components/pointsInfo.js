@@ -3,19 +3,19 @@ import React from 'react'
 const pointsInfo=()=>{
     return(
         <div style={{borderRadius:'10px',height:'fit-content',padding:'30px',margin:'30px',backgroundColor:'rgba(255,255,255,0.5)',border:'1px solid #2c3e50',textAlign:'center'}}>
-        <h2>Како да соберам вело-поени?</h2>
+        <h2>How do I collect bike points?</h2>
         <hr/>
         <ol>
-            <p>Секој лајк на вашите објавени возења ви придонесува 1 вело поен</p>
-            <p>Секоја додадена и прифатена вело патека придонесува 30 вело-поени кон вашиот профил</p>
-            <p>Секое додадено и прифатено место придонесува 10 вело-поени кон вашиот профил</p>
+            <p>Each like on your published rides contributes 1 bike point</p>
+            <p>Each added and accepted bike path contributes 30 bike points to your profile</p>
+            <p>Each added and accepted place contributes 10 bicycle points to your profile</p>
         </ol>
-        <h2>Што да правам со моите собрани вело-поени?</h2>
+        <h2>What should I do with my collected bike points?</h2>
         <hr/>
         <ul>
-            <p>Со 500 поени добивате можност да додавате кон главната мапа без проверување од модератор</p>
-            <p>Со 1000 поени добивате можност да станете модератор</p>
-            <p>Добивате попусти во вело-сервиси/продавници и слично (Доаѓа наскоро)</p>
+            <p>With 500 points you get the opportunity to add to the main map without being checked by a moderator</p>
+            <p>With 1000 points you get the opportunity to become a moderator</p>
+            <p>You get discounts in bicycle services / shops, etc. (Coming soon)</p>
         </ul>
     </div>
     )

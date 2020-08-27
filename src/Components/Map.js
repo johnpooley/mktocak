@@ -89,7 +89,7 @@ class Map extends Component{
                 this.mainMarker.setLngLat(this.map.getCenter());
             });
     };
-    
+
     displayDefaultMap = ()=>{
         const db = firebase.firestore();
         let bikeLanes = null;
@@ -100,7 +100,7 @@ class Map extends Component{
             db.collection('mainPlaces').get().then(result=>{
                 places = result.docs;
                 this.setState({bikeLanes: bikeLanes,places: places},this.addPlacesAndRides);
-                
+
             }).catch(err=>{this.props.history.push('/error')})
         }).catch(err=>{this.props.history.push('/error')})
     }
@@ -114,9 +114,9 @@ class Map extends Component{
                 const marker = new mapboxgl.Marker({element: sel})
                 .setLngLat([data.point[0].lng,data.point[0].lat])
                 .addTo(this.map)
-                
+
                 mrks.push(marker);
-                
+
             }
             if(data.placeType==2 && !this.props.dontService){
                 const popup = new mapboxgl.Popup({ offset: 25 }).setText(data.placeName);
@@ -185,7 +185,7 @@ class Map extends Component{
                 }
             });
             this.map.addLayer({
-                "id": "dobro",
+                "id": "good",
                 "type": "line",
                 "source": {"type": "geojson","data":turf2},
                 "layout": {
@@ -250,7 +250,7 @@ class Map extends Component{
                 }
             });
             this.map.addLayer({
-                "id": "dobro",
+                "id": "good",
                 "type": "line",
                 "source": {"type": "geojson","data":turf2},
                 "layout": {
@@ -299,8 +299,8 @@ class Map extends Component{
         this.map.removeSource('novo');
         }catch(err){}
         try{
-        this.map.removeLayer('dobro');
-        this.map.removeSource('dobro');
+        this.map.removeLayer('good');
+        this.map.removeSource('good');
         }catch(err){}
         try{
         this.map.removeLayer('loso');
@@ -401,19 +401,19 @@ class Map extends Component{
                 <div style={{display:'inline-block',verticalAlign:'top',margin:'5px'}}>
                     <label className='container' style={{cursor:'default'}}>
                         <span style={{width:'10px',height:'10px',borderRadius: '50%',display:'inline-block',backgroundColor:'#CC8899',marginRight:'10px'}}/>
-                        На коловоз одвоена од возила
+                        On the road separated from vehicles
                     </label>
                     <label className='container' style={{cursor:'default'}}>
                         <span style={{width:'10px',height:'10px',borderRadius: '50%',display:'inline-block',backgroundColor:'#009696',marginRight:'10px'}}/>
-                        На тротоар одвоена од пешаци
+                        On the sidewalk separated from pedestrians
                     </label>
                     <label className='container' style={{cursor:'default'}}>
                         <span style={{width:'10px',height:'10px',borderRadius: '50%',display:'inline-block',backgroundColor:'#98BF64',marginRight:'10px'}}/>
-                        На тротоар заедно со пешаци
+                        On the sidewalk along with pedestrians
                     </label>
                     <label className='container' style={{cursor:'default'}}>
                         <span style={{width:'10px',height:'10px',borderRadius: '50%',display:'inline-block',backgroundColor:'#893101',marginRight:'10px'}}/>
-                        Сосема одвоена или offroad
+                        Completely separate or offroad
                     </label>
                 </div>
             )
@@ -422,14 +422,14 @@ class Map extends Component{
 
         let fullScreen;
         if(this.props.fullScreen){
-            fullScreen = (                
+            fullScreen = (
             <div className='legend'>
                 <div style={{borderRadius:'10px',height:'fit-content',padding:'20px',margin:'10px',backgroundColor:'rgba(255,255,255,0.1)',border:'1px solid white'}}>
-                        <label className='container'>Состојба на вело-патеките
+                        <label className='container'>Condition of the bike paths
                             <input type='checkbox' checked={this.props.stateClick} onChange={()=>this.props.changeStatePlace()}/>
                             <span className='checkmark'></span>
                         </label>
-                        <label className='container'>Местоположба на вело-патеките
+                        <label className='container'>Location of the bike paths
                             <input type='checkbox' checked={!this.props.stateClick} onChange={()=>this.props.changeStatePlace()}/>
                             <span className='checkmark'></span>
                         </label>
@@ -440,17 +440,17 @@ class Map extends Component{
                             <label className='container' onClick={()=>this.props.cngPark()}>
                                 <img style={{width:'30px',verticalAlign:'middle'}} src={img1} alt='Please reload the browser'/>
                                 <span style={{margin:'10px'}}></span>
-                                Вело-паркинзи
+                                Bicycle parking lots
                             </label>
                             <label className='container' onClick={()=>this.props.cngShop()}>
                                 <img style={{width:'30px',verticalAlign:'middle'}} src={img2} alt='Please reload the browser'/>
                                 <span style={{margin:'10px'}}></span>
-                                    Продавници
+                                    Stores
                             </label>
                             <label className='container' onClick={()=>this.props.cngService()}>
                                 <img style={{width:'30px',verticalAlign:'middle'}} src={img3} alt='Please reload the browser'/>
                                 <span style={{margin:'10px'}}></span>
-                                    Сервиси
+                                    Services
                             </label>
                         </div>
                 </div>
