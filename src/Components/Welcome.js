@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import '../Containers/Contribute.css'
-import Axios from 'axios'
 
-class Welcome extends Component {
-  render(){
+const Welcome =()=> {
     return (
       <div className="App" style={{textAlign:'center',padding:'50px'}}>
 
@@ -15,6 +13,4 @@ class Welcome extends Component {
       </div>
     );
   }
-}
-
 export default Welcome;
